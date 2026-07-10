@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "scan": "node scripts/scan-assets.mjs",
+    "record": "node scripts/record-demo.mjs",
     "postinstall": "npm run scan",
     "pretypecheck": "npm run scan",
     "predev": "npm run scan",
@@ -33,6 +34,7 @@
   "devDependencies": {
     "@types/react": "19.0.0",
     "@types/react-dom": "19.0.0",
+    "playwright": "^1.61.1",
     "typescript": "5.8.2"
   }
 }
