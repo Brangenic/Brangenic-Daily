@@ -3,6 +3,9 @@ import { existsSync } from "node:fs";
 
 Config.setVideoImageFormat("jpeg");
 Config.setOverwriteOutput(true);
+// Production media lives in ./assets, so staticFile("live/shot-01.mp4")
+// resolves to assets/live/shot-01.mp4.
+Config.setPublicDir("assets");
 // Concurrency is left to Remotion's auto-detection; override here if needed.
 
 /*

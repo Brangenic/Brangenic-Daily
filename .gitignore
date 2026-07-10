@@ -2,3 +2,11 @@ node_modules/
 out/
 .DS_Store
 *.log
+
+# Production media (large; provided locally per the asset pack).
+# The folder structure, README and .gitkeep files stay tracked.
+assets/**/*.mp4
+assets/**/*.mov
+assets/**/*.mp3
+assets/**/*.wav
+assets/**/*.json

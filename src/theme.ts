@@ -9,6 +9,7 @@ export const colors = {
   ink: "#141814", // primary text on light
   green: "#14523c", // deep brand green
   panel: "#101711", // dark panel background
+  dark: "#101711", // alias for panel (production-pack naming)
   gold: "#b98f3e", // gold accent
   muted: "#79837b", // muted gray text
   hairline: "#e6e4dc", // hairline borders / dividers
