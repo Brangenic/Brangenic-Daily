@@ -10,3 +10,6 @@ assets/**/*.mov
 assets/**/*.mp3
 assets/**/*.wav
 assets/**/*.json
+
+# Generated from ./assets by scripts/scan-assets.mjs (postinstall + pre-hooks).
+src/asset-manifest.ts

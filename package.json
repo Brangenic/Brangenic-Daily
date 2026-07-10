@@ -5,6 +5,8 @@
   "private": true,
   "scripts": {
     "scan": "node scripts/scan-assets.mjs",
+    "postinstall": "npm run scan",
+    "pretypecheck": "npm run scan",
     "predev": "npm run scan",
     "dev": "remotion studio",
     "prestudio": "npm run scan",
