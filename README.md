@@ -46,6 +46,33 @@ npm run render:master-vertical  # -> out/realm-master-vertical.mp4 (1080×1920)
 Cut-downs (`Agents` / `Developers` / `Communities`, one world each) can be added
 on top of the same segment components once the master is locked.
 
+## The Apple-style film (`Apple`)
+
+A separate, dark-void product film (`src/apple/`) in the visual language of an
+Apple launch video: one seamless environment, floating UI, enormous quiet
+typography, morphs instead of cuts.
+
+```bash
+npm run dev                       # Studio
+npx remotion render Apple out/realm-apple.mp4          # 1920×1080
+npx remotion render AppleVertical out/realm-apple-vertical.mp4  # 1080×1920
+```
+
+- **Length** = `vo/apple-cut.mp3` duration + 2s (falls back to the scene
+  timeline when the VO is absent).
+- **`src/apple/timeline.ts`** declares all 11 scenes (durations, kinetic lines,
+  accent words, focus regions) — the single retiming surface.
+- **Design system** in `src/apple/`: `Void` (the one persistent environment),
+  `KineticLine` (word-stagger type, one green accent word per line, gold for
+  the price/logo), `FloatPanel` (device-less UI frame with reflection +
+  perspective), `Fragments` (the convergence open), and a `morph` transition.
+- **Scenes** (`src/apple/scenes/`): fragments converge → snap into one glowing
+  rectangle → bloom into the dashboard → forms/signature → nudge lifts out →
+  seller report assembles → commission count-up → website templates fan →
+  copilot writes → `$15` price → "Realm." close.
+- **Captions** are off by default (`withCaptions`); `AppleVertical` turns them
+  on for social. Missing screen recordings render as placeholder slates.
+
 ## Original demo compositions
 
 | ID            | Size       | FPS | Length            |

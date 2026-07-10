@@ -7,17 +7,22 @@ const VO_VOL = 1.0;
 const MUSIC_FULL = 0.8;
 const MUSIC_DUCK = 0.2; // ~ -12 dB under full while the VO speaks
 
-const finaleStart = (() => {
+const masterFinaleStart = (() => {
   const placed = placeSegments();
   return placed[placed.length - 1].start;
 })();
 
 /**
- * Audio bed: the voiceover is the master; the music ducks ~12 dB beneath it,
+ * Audio bed: the voiceover is the master; the music ducks ~12-14 dB beneath it,
  * swells back up under the finale, and fades out over the last 40 frames.
  * Anything missing is simply omitted (the render stays silent-safe).
+ * `finaleStart` lets other films (e.g. the Apple cut) place their own swell.
  */
-export const Soundtrack: React.FC<{ vo: string; music?: string }> = ({ vo, music = "music/bed.mp3" }) => {
+export const Soundtrack: React.FC<{ vo: string; music?: string; finaleStart?: number }> = ({
+  vo,
+  music = "music/bed.mp3",
+  finaleStart = masterFinaleStart,
+}) => {
   const { durationInFrames } = useVideoConfig();
   const voPresent = hasAsset(vo);
 

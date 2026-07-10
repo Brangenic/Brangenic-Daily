@@ -6,6 +6,8 @@ import { colors } from "./theme";
 import { RealmVideo } from "./RealmVideo";
 import { RealmMaster, type RealmMasterProps } from "./RealmMaster";
 import { baseTotal, FPS as MASTER_FPS, TAIL } from "./timeline";
+import { RealmApple, type RealmAppleProps } from "./apple/RealmApple";
+import { scenesBaseTotal, TAIL as APPLE_TAIL } from "./apple/timeline";
 import { hasAsset } from "./asset-manifest";
 
 const FPS = 30;
@@ -51,6 +53,21 @@ const masterMetadata =
     return { durationInFrames: base + extraFinale, props: { ...props, extraFinale } };
   };
 
+const appleMetadata = async ({ props }: { props: RealmAppleProps }) => {
+  const base = scenesBaseTotal();
+  let target = base;
+  if (hasAsset("vo/apple-cut.mp3")) {
+    try {
+      const seconds = await getAudioDurationInSeconds(staticFile("vo/apple-cut.mp3"));
+      target = Math.ceil(seconds * MASTER_FPS) + APPLE_TAIL;
+    } catch {
+      target = base;
+    }
+  }
+  const extraFinale = Math.max(0, target - base);
+  return { durationInFrames: base + extraFinale, props: { ...props, extraFinale } };
+};
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
@@ -78,6 +95,28 @@ export const RemotionRoot: React.FC = () => {
         height={1920}
         defaultProps={{ orientation: "vertical", vo: "vo/master.mp3", voJson: "vo/master.json", extraFinale: 0 } satisfies RealmMasterProps}
         calculateMetadata={masterMetadata("vo/master.mp3")}
+      />
+
+      {/* Apple-style film (dark void, floating UI, kinetic type). */}
+      <Composition
+        id="Apple"
+        component={RealmApple}
+        durationInFrames={scenesBaseTotal()}
+        fps={FPS}
+        width={1920}
+        height={1080}
+        defaultProps={{ orientation: "landscape", extraFinale: 0, withCaptions: false } satisfies RealmAppleProps}
+        calculateMetadata={appleMetadata}
+      />
+      <Composition
+        id="AppleVertical"
+        component={RealmApple}
+        durationInFrames={scenesBaseTotal()}
+        fps={FPS}
+        width={1080}
+        height={1920}
+        defaultProps={{ orientation: "vertical", extraFinale: 0, withCaptions: true } satisfies RealmAppleProps}
+        calculateMetadata={appleMetadata}
       />
     </>
   );
