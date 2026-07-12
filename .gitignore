@@ -1,0 +1,15 @@
+node_modules/
+out/
+.DS_Store
+*.log
+
+# Production media (large; provided locally per the asset pack).
+# The folder structure, README and .gitkeep files stay tracked.
+assets/**/*.mp4
+assets/**/*.mov
+assets/**/*.mp3
+assets/**/*.wav
+assets/**/*.json
+
+# Generated from ./assets by scripts/scan-assets.mjs (postinstall + pre-hooks).
+src/asset-manifest.ts

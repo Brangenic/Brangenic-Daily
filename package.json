@@ -1,0 +1,40 @@
+{
+  "name": "realm-demo-video",
+  "version": "1.0.0",
+  "description": "Realm — product demo video built with Remotion v4",
+  "private": true,
+  "scripts": {
+    "scan": "node scripts/scan-assets.mjs",
+    "record": "node scripts/record-demo.mjs",
+    "postinstall": "npm run scan",
+    "pretypecheck": "npm run scan",
+    "predev": "npm run scan",
+    "dev": "remotion studio",
+    "prestudio": "npm run scan",
+    "studio": "remotion studio",
+    "prerender": "npm run scan",
+    "render": "remotion render RealmDemo out/realm-demo.mp4",
+    "render:square": "remotion render RealmSquare out/realm-square.mp4",
+    "prerender:master": "npm run scan",
+    "render:master": "remotion render Master out/realm-master.mp4",
+    "prerender:master-vertical": "npm run scan",
+    "render:master-vertical": "remotion render MasterVertical out/realm-master-vertical.mp4",
+    "upgrade": "remotion upgrade",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.487",
+    "@remotion/google-fonts": "4.0.487",
+    "@remotion/media-utils": "4.0.487",
+    "@remotion/transitions": "^4.0.487",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "remotion": "4.0.487"
+  },
+  "devDependencies": {
+    "@types/react": "19.0.0",
+    "@types/react-dom": "19.0.0",
+    "playwright": "^1.61.1",
+    "typescript": "5.8.2"
+  }
+}
